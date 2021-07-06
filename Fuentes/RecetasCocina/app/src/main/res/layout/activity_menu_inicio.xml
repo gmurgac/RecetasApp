@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".MainActivity">
+    <include layout="@layout/toolbar"
+        android:id="@+id/idTolbar"
+        ></include>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/idTolbar"
+
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/buscar_almuerzo_iv"
+                android:src="@drawable/platos"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                ></ImageView>
+            <Button
+                android:id="@+id/btn_buscar_almuerzo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundedbutton"
+                android:padding="@dimen/paddin_buttons_menu"
+                android:text="BUSCAR ALMUERZO"
+                android:textColor="@color/primary_text"
+                android:layout_centerInParent="true"
+                ></Button>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/buscar_trago_iv"
+                android:src="@drawable/tragos_bar"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+
+                ></ImageView>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buscar Tragos"
+                android:id="@+id/btn_buscar_trago"
+                android:layout_margin="30dp"
+                android:padding="@dimen/paddin_buttons_menu"
+                android:layout_gravity="center"
+                android:textColor="@color/primary_text"
+                android:background="@drawable/roundedbutton"
+                android:layout_centerInParent="true"
+                ></Button>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/inventario_iv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/inventario"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+
+                ></ImageView>
+            <Button
+                android:id="@+id/btn_inventario_ingresar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundedbutton"
+                android:padding="@dimen/paddin_buttons_menu"
+                android:text="INVENTARIO"
+                android:textColor="@color/primary_text"
+                android:layout_centerInParent="true"
+
+                ></Button>
+
+        </RelativeLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

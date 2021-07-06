@@ -1,16 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.recetascocina">
-<uses-permission android:name="android.permission.INTERNET" ></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RecetasCocina">
-
-        <activity android:name=".dto.MainActivity">
+        android:theme="@style/Theme.RecetasCocina"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".RegistroUsuarioActivity"></activity>
+        <activity android:name=".VerRecetaTragoActivity" />
+        <activity
+            android:name=".BusquedaTragoActivity"
+            android:windowSoftInputMode="adjustPan|stateVisible" />
+        <activity android:name=".ModificarStockIngredienteActivity" />
+        <activity android:name=".VerRecetaPlatoActivity" />
+        <activity android:name=".AgregarIngredienteActivity" />
+        <activity
+            android:name=".BusquedaAlmuerzoActivity"
+            android:windowSoftInputMode="adjustPan|stateVisible" />
+        <activity
+            android:name=".InventarioIngredientesActivity"
+            android:windowSoftInputMode="adjustPan|stateVisible" />
+        <activity
+            android:name=".MenuInicioActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

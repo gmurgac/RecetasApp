@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".VerRecetaPlatoActivity"
+android:orientation="vertical">
+
+<include layout="@layout/toolbar"
+    android:id="@+id/idTolbar"></include>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:id="@+id/nombre_plato_tv"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:layout_below="@+id/idTolbar"
+            ></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:textSize="20sp"
+            android:id="@+id/cantidad_comensales_tv"
+            android:layout_below="@+id/nombre_plato_tv"
+            ></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:text="INGREDIENTES"
+            android:id="@+id/tv_ingredientes"
+            android:layout_below="@+id/cantidad_comensales_tv"
+            ></TextView>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/ingredientes_plato_lv"
+            android:layout_below="@+id/tv_ingredientes"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10dp"
+            android:padding="8dp"
+            android:layout_margin="5dp"
+            ></ListView>
+
+        <ScrollView
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ingredientes_plato_lv"
+            android:layout_above="@+id/realizar_plato_btn"
+            >
+                <!--TODO: FIJAR BOTON REALIZAR ABAJO, SOLO ESCROL PREPARACION -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Preparacion"
+                            android:textAlignment="center"
+                            android:textSize="25sp"
+                            android:id="@+id/tv_preparacion"
+                            android:layout_below="@+id/ingredientes_plato_lv"
+                            ></TextView>
+                        <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/preparacion_tv"
+                    android:layout_below="@+id/tv_preparacion"
+                    ></TextView>
+                        </LinearLayout>
+        </ScrollView>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/realizar_plato_btn"
+            android:text="REALIZAR"
+            android:background="@drawable/roundedbutton"
+            android:textColor="@color/primary_text"
+            android:layout_gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+
+
+            ></Button>
+
+
+
+
+</RelativeLayout>

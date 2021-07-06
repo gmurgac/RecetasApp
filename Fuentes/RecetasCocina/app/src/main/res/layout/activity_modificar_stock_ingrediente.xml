@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ModificarStockIngredienteActivity">
+    <include layout="@layout/toolbar"
+        android:id="@+id/idTolbar"></include>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nombre_ingrediente_modificar_tv"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="30sp"
+            android:layout_below="@+id/idTolbar"
+            ></TextView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_system_update_alt_24"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/idTolbar"
+            android:layout_alignParentRight="true"
+            android:id="@+id/modificar_ingrediente_fb"
+            ></com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+    <TextView
+        android:id="@+id/tv_cantidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nombre_ingrediente_modificar_tv"
+        android:layout_gravity="center"
+        android:layout_marginTop="74dp"
+        android:padding="10dp"
+        android:layout_weight="2"
+        android:text="Cantidad: "
+        android:textAlignment="center"
+        android:textSize="20sp"></TextView>
+
+    <NumberPicker
+        android:id="@+id/cantidad_np"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/nombre_ingrediente_modificar_tv"
+        android:layout_toRightOf="@+id/tv_cantidad"></NumberPicker>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nombre_ingrediente_modificar_tv"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="83dp"
+        android:id="@+id/punto_tv"
+        android:layout_toRightOf="@id/cantidad_np"
+        android:text="."></TextView>
+    <NumberPicker
+        android:id="@+id/cantidad_decimal_np"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_below="@+id/nombre_ingrediente_modificar_tv"
+        android:layout_toRightOf="@+id/punto_tv"></NumberPicker>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/cantidad_decimal_np"
+        android:layout_below="@+id/nombre_ingrediente_modificar_tv"
+        android:layout_marginTop="74dp"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/unidad_medida_tv3"
+        ></TextView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp"
+        android:id="@+id/eliminar_ingrediente_fb"
+        android:src="@drawable/ic_baseline_restore_from_trash_24"
+        ></com.google.android.material.floatingactionbutton.FloatingActionButton>
+</RelativeLayout>
+

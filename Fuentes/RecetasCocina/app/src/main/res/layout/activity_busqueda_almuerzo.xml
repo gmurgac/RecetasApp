@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".BusquedaAlmuerzoActivity"
+
+    >
+
+    <include layout="@layout/toolbar"
+        android:id="@+id/idTolbar"></include>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/fondo_busqueda">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre plato:"
+            android:textAlignment="center"
+            android:padding="15dp"
+            android:textColor="@color/darkBlack"
+            ></TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:id="@+id/plato_buscar_edtxt"
+            android:maxLines="1"
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_etxt"
+
+            ></EditText>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_buscar_almuerzo"
+            android:text="BUSCAR"
+            android:background="@drawable/roundedbutton"
+            android:textColor="@color/primary_text"
+            android:gravity="center"
+            android:layout_gravity="center"
+            ></Button>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/platos_encontrados_lv"
+            android:layout_marginTop="8dp"
+            android:layout_margin="5dp"
+            android:dividerHeight="10dp"
+            android:divider="@android:color/transparent"
+            ></ListView>
+
+    </LinearLayout>
+
+</LinearLayout>

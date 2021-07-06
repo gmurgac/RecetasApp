@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VerRecetaTragoActivity"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar"
+        android:id="@+id/idTolbar"></include>
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".VerRecetaPlatoActivity"
+        android:orientation="vertical"
+        android:id="@+id/linear_layou">-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:id="@+id/nombre_trago_tv"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:layout_below="@+id/idTolbar"
+        ></TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:text="INGREDIENTES"
+        android:id="@+id/tv_ingredientes"
+        android:layout_below="@+id/nombre_trago_tv"
+        ></TextView>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/ingredientes_trago_lv"
+        android:layout_below="@+id/tv_ingredientes"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp"
+        android:padding="8dp"
+        android:layout_margin="5dp"
+        ></ListView>
+
+    <ScrollView
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ingredientes_trago_lv"
+        >
+        <!--TODO: FIJAR BOTON REALIZAR ABAJO, SOLO ESCROL PREPARACION -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Preparacion"
+                android:textAlignment="center"
+                android:textSize="25sp"
+
+
+                ></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/preparacion_trago_tv"
+
+                ></TextView>
+            </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/realizar_trago_btn"
+        android:text="REALIZAR"
+        android:background="@drawable/roundedbutton"
+        android:textColor="@color/primary_text"
+        android:layout_gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+
+        ></Button>
+
+
+</RelativeLayout>

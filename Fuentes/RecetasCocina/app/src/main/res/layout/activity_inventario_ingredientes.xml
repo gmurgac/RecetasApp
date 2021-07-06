@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <include layout="@layout/toolbar"
+        android:id="@+id/idTolbar"></include>
+    <ListView
+        android:id="@+id/ingredientes_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/idTolbar"
+        android:dividerHeight="10dp"
+        android:padding="10dp"
+        android:divider="@android:color/transparent"
+        android:background="@drawable/fondo_ingredientes"
+        ></ListView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/margen_boton_float"
+        app:backgroundTint="@color/icons"
+        android:background="@color/icons"
+        android:backgroundTint="@color/icons"
+        android:src="@drawable/ic_baseline_add_24"
+        android:id="@+id/agregar_ingrediente_btn"
+        app:elevation="1dp"
+
+        ></com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+
+</RelativeLayout>

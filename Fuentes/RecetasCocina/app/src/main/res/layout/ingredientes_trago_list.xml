@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rounded_items_listview"
+    android:padding="5dp">
+
+    <TextView
+        android:textSize="@dimen/nombre_prod"
+        android:id="@+id/nombre_ingrediente_trago_tv"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/margin_left_prod"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"></TextView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
+        <TextView
+            android:textSize="@dimen/nombre_prod"
+            android:id="@+id/cantidad_ingrediente_trago_tv"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/margin_left_prod"
+            android:layout_height="wrap_content"
+            ></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cantidad_ingrediente_stock_tragos_tv"
+            ></TextView>
+    </LinearLayout>
+
+
+</LinearLayout>

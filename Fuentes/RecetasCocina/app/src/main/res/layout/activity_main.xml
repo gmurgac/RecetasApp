@@ -1,18 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dto.MainActivity">
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="@drawable/fondo_app_main"
+    >
+    <!--<include layout="@layout/toolbar"
+        android:id="@+id/idTolbar"></include>-->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RECETASCOCINA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="50dp"
+        android:fontFamily="@font/titulo_app_font_1"
+        android:text="RecetasMe"
+        android:textColor="@color/primary_text"
+        android:textSize="50dp"></TextView>
+    <!-- TODO: logo app -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/menu_inicio_btn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="25dp"
+        android:text="Iniciar"
+        android:textColor="@color/primary_text"
+        android:background="@drawable/roundedbutton"
+        ></Button>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
