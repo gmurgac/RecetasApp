@@ -1,6 +1,7 @@
 package com.example.recetascocina;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,7 +40,13 @@ public class BusquedaAlmuerzoActivity extends AppCompatActivity {
     private List<Plato> platosJsonList = new ArrayList<Plato>(){}; //Listado de platos donde se guardaran platos encontrados por busqueda
     private RequestQueue queue; //Objeto necesario para el consumo de la API, para abrir cola de peticiones
     private PlatosListAdapter adapterPlatosLv; //Adaptador personalizado de Vista de lista.
+    private Toolbar toolbar;
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
 
     @Override
@@ -53,6 +60,10 @@ public class BusquedaAlmuerzoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busqueda_almuerzo);
         //Inicializacion de elementos graficos
+        this.toolbar = findViewById(R.id.idTolbar);
+        this.setSupportActionBar(this.toolbar);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.getSupportActionBar().setDisplayShowHomeEnabled(true);
         this.platoEdTxt = findViewById(R.id.plato_buscar_edtxt);
         this.platosEncontradosLv = findViewById(R.id.platos_encontrados_lv);
         this.buscarPlatosBtn = findViewById(R.id.btn_buscar_almuerzo);

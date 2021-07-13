@@ -1,6 +1,7 @@
 package com.example.recetascocina;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
@@ -30,12 +31,22 @@ public class VerRecetaPlatoActivity extends AppCompatActivity {
     private Button realizarPlatoBtn;//Boton de realizar plato, se descuentan ingredientes utilizados de stock de la base de datos local de usuario.
     private IngredientesPlatoListAdapter adapterIngredientesPlato;//Adaptador de vista de listado de Ingredientes del plato
     List<Ingrediente> ingredientes = new ArrayList<Ingrediente>();//Listado de ingredientes,
+    private Toolbar toolbar;
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
     //METODO CUANDO SE CREA ACTIVITY
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_receta_plato);//Carga de elementos graficos del activity
+        this.toolbar = findViewById(R.id.idTolbar);
+        this.setSupportActionBar(this.toolbar);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.getSupportActionBar().setDisplayShowHomeEnabled(true);
         //RECIBIR SI SE ENVIARON EXTRA EN INTENT QUE VIENE DE BUSQUEDA ALMUERZO
         if(getIntent().getExtras() != null){ // En caso de que vengan extras
             this.plato = (Plato) getIntent().getSerializableExtra("plato"); //Se carga plato enviado al haber dado clik en item del listado de platos de Busqueda de platos Activity.

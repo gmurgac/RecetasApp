@@ -55,7 +55,7 @@ android:orientation="vertical">
             android:layout_below="@+id/ingredientes_plato_lv"
             android:layout_above="@+id/realizar_plato_btn"
             >
-                <!--TODO: FIJAR BOTON REALIZAR ABAJO, SOLO ESCROL PREPARACION -->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

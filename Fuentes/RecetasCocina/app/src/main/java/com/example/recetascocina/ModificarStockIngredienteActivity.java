@@ -2,6 +2,7 @@ package com.example.recetascocina;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -32,12 +33,23 @@ public class ModificarStockIngredienteActivity extends AppCompatActivity {
     private IngredientesDAO ingreDAO = new IngredientesDAOSqLite(this);//Dao que conecta bbdd
     private Ingrediente ingrediente;//Objeto de clase ingrediente
     private NumberPicker cantidadPicker;//Seleccionador de numeros enteros para cantidad de stock
+    private Toolbar toolbar;
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_stock_ingrediente);
         //Inicializacion de elementos graficos
+        this.toolbar = findViewById(R.id.idTolbar);
+        this.setSupportActionBar(this.toolbar);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.getSupportActionBar().setDisplayShowHomeEnabled(true);
         this.unidadMedida = findViewById(R.id.unidad_medida_tv3);
         this.cantidadPicker = findViewById(R.id.cantidad_np);
         this.decimalesPicker = findViewById(R.id.cantidad_decimal_np);

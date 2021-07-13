@@ -1,6 +1,7 @@
 package com.example.recetascocina;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -45,6 +45,13 @@ public class AgregarIngredienteActivity extends AppCompatActivity {
     private Button agregar;
     private SpinerIngredientesAdapter adapterSpinerIngr;
     private TextView unidadMedidaTv;
+    private Toolbar toolbar;
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
     @Override
     protected void onResume() {
@@ -171,5 +178,9 @@ public class AgregarIngredienteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_ingrediente);
+        this.toolbar = findViewById(R.id.idTolbar);
+        this.setSupportActionBar(this.toolbar);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 }

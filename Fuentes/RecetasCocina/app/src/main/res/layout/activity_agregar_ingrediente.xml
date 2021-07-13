@@ -7,7 +7,8 @@
     tools:context=".AgregarIngredienteActivity"
     android:orientation="vertical"
     >
-    <include layout="@layout/toolbar"></include>
+    <include layout="@layout/toolbar"
+        android:id="@+id/idTolbar"></include>
     <TextView
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"

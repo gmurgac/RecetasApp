@@ -1,6 +1,7 @@
 package com.example.recetascocina;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
@@ -29,12 +30,23 @@ public class VerRecetaTragoActivity extends AppCompatActivity {
     private List<Ingrediente> ingredientes = new ArrayList<Ingrediente>();//Listado de ingredientes
     private IngredientesDAO ingredientesStock = new IngredientesDAOSqLite(this);//Dao ingredientes en base de datos local
     private IngredientesTragoListAdapter adapterIngrTragoLv;//Adaptador de vista de listado de ingredientes del trago
+    private Toolbar toolbar;
 
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
     //Metodo de creacion de activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_receta_trago);//Carga de elementos graficos de activity
+        this.toolbar = findViewById(R.id.idTolbar);
+        this.setSupportActionBar(this.toolbar);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.getSupportActionBar().setDisplayShowHomeEnabled(true);
         //Recibir extras enviados por activity de busqueda de trago
         if(getIntent().getExtras() != null){
             this.trago = (Trago) getIntent().getSerializableExtra("trago");//Se recibe objeto trago enviado desde activity busqueda de trago

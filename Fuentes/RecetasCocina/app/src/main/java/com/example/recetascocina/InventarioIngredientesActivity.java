@@ -1,6 +1,7 @@
 package com.example.recetascocina;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.example.recetascocina.adapters.IngredientesListAdapter;
 import com.example.recetascocina.dao.IngredientesDAO;
@@ -26,6 +26,12 @@ public class InventarioIngredientesActivity extends AppCompatActivity {
     private List<Ingrediente> ingredientes;//Lista de ingredientes
     private IngredientesDAO ingrDAO = new IngredientesDAOSqLite(this);//Dao de ingredientes, conecta con Base de datos local
     private FloatingActionButton agregarIngrBtn;//Boton flotante, redirigire a Activity de agregar ingredientes a la base de datos
+    private Toolbar toolbar;
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
     //Metodo on resume
     @Override
@@ -63,6 +69,10 @@ public class InventarioIngredientesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventario_ingredientes);
+        this.toolbar = findViewById(R.id.idTolbar);
+        this.setSupportActionBar(this.toolbar);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
     }

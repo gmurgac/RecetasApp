@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ingredientes_trago_lv"
         >
-        <!--TODO: FIJAR BOTON REALIZAR ABAJO, SOLO ESCROL PREPARACION -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,6 +1,7 @@
 package com.example.recetascocina;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,11 +38,17 @@ public class BusquedaTragoActivity extends AppCompatActivity {
     private RequestQueue queue;//Objeto cola de peticiones
     private TragosListAdapter adapterListTragos;//Adaptador personalizado de vista de lista para tragos
     private List<Trago> tragosJsonList = new ArrayList<Trago>(){};//Listado de tragos
+    private Toolbar toolbar;
 
     @Override
     protected void onResume() {
         super.onResume();
         this.adapterListTragos.notifyDataSetChanged();//Se notifica al adaptador si es que hubo cambios en elementos y en sus componentes del listado de tragos
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override
@@ -49,6 +56,10 @@ public class BusquedaTragoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busqueda_trago);
         //Inicializacion de elementos graficos
+        this.toolbar = findViewById(R.id.idTolbar);
+        this.setSupportActionBar(this.toolbar);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.getSupportActionBar().setDisplayShowHomeEnabled(true);
         this.tragoEd = findViewById(R.id.trago_buscar_edtxt);
         this.buscarTragoBtn = findViewById(R.id.btn_buscar_trago);
         this.tragosEncontradosLv = findViewById(R.id.tragos_encontrados_lv);
