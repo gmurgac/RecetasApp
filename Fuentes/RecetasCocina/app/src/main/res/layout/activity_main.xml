@@ -30,7 +30,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginRight="35dp"
         android:layout_marginBottom="25dp"
-        android:text="Iniciar"
+        android:text="Comenzar"
         android:textColor="@color/primary_text"
         android:background="@drawable/roundedbutton"
         ></Button>

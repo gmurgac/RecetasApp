@@ -48,7 +48,13 @@ public class PlatosListAdapter extends ArrayAdapter<Plato> {
         TextView mensajeAlertaTv = fila.findViewById(R.id.alerta_mensaje_tv);
         Plato actual = this.list.get(position);
         nombreTv.setText(actual.getNombre());
-        int cantidadComensalesPlato = actual.getIngredientes().get(0).getPlatoIngredientes().getCantidadComensales();
+        int cantidadComensalesPlato =0;
+        try{
+            cantidadComensalesPlato = actual.getIngredientes().get(0).getPlatoIngredientes().getCantidadComensales();
+
+        }catch (Exception e){
+
+        }
         comensalesTv.setText("Receta para: "+cantidadComensalesPlato+" personas");
 
         //Verificacion de stock, si tiene cantidades suficientes asigna colores verde y OK, si tiene menos toma color Rojo.(Acompañados de mensaje)

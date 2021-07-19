@@ -61,7 +61,12 @@ public class VerRecetaPlatoActivity extends AppCompatActivity {
         this.realizarPlatoBtn = findViewById(R.id.realizar_plato_btn);
         //CARGAR ELEMENTOS DEL PLATO
         this.nombrePlatoTv.setText(this.plato.getNombre());//Se carga nombre.
-        this.cantidadComenTv.setText("Receta para "+this.plato.getIngredientes().get(0).getPlatoIngredientes().getCantidadComensales()+" personas");//Se carga cantidad de comensales
+        try {
+            this.cantidadComenTv.setText("Receta para "+this.plato.getIngredientes().get(0).getPlatoIngredientes().getCantidadComensales()+" personas");//Se carga cantidad de comensales
+        }catch (Exception e){
+
+        }
+
         this.preparacionTv.setText(this.plato.getDescripcion());//Se carga preparacion con descripcion del plato
 
         this.adapterIngredientesPlato = new IngredientesPlatoListAdapter(

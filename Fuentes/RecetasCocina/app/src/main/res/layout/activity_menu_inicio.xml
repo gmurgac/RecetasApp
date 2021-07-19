@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 
+
     tools:context=".MainActivity">
     <include layout="@layout/toolbar"
         android:id="@+id/idTolbar"
@@ -15,6 +16,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_below="@+id/idTolbar"
+        android:id="@+id/id_linearLayout_menuInicio"
 
         >
         <RelativeLayout

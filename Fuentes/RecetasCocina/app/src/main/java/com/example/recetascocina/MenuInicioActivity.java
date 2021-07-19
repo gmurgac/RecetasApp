@@ -2,12 +2,16 @@ package com.example.recetascocina;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.dynamicanimation.animation.DynamicAnimation;
+import androidx.dynamicanimation.animation.SpringAnimation;
+import androidx.dynamicanimation.animation.SpringForce;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toolbar;
 
 public class MenuInicioActivity extends AppCompatActivity {
@@ -45,7 +49,12 @@ public class MenuInicioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_inicio);
+
+        final LinearLayout lil = findViewById(R.id.id_linearLayout_menuInicio);
+        //final SpringAnimation sprinAnim = new SpringAnimation(lil, DynamicAnimation.TRANSLATION_Y,0);
+
         this.buscarAlmuerzoBtn = findViewById(R.id.btn_buscar_almuerzo);
+
         this.buscarAlmuerzoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
