@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RecetasCocina"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RegistroUsuarioActivity"></activity>
+        <activity android:name=".InicioSesionActivity"></activity>
+        <activity android:name=".RegistroUsuarioActivity" />
         <activity android:name=".VerRecetaTragoActivity" />
         <activity
             android:name=".BusquedaTragoActivity"

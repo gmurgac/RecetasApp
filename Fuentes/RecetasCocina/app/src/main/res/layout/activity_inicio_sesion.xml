@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InicioSesionActivity">
+    <include layout="@layout/toolbar"
+        android:id="@+id/idTolbar"
+
+        ></include>
+    <ScrollView
+        android:elevation="-1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include layout="@layout/toolbar"
+                android:id="@+id/idToolbar"
+                android:visibility="invisible"
+                ></include>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NickName"
+                android:textSize="20sp"
+                android:layout_marginTop="25dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/tv_nickname"
+                android:layout_below="@id/idToolbar"
+                ></TextView>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_nickname"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/ed_nickname"
+                android:maxLines="1"
+                android:maxLength="25"
+                android:textSize="25sp"
+                android:padding="15dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/rounded_etxt"
+                ></EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:layout_below="@+id/ed_nickname"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:text="Contraseña"
+                android:id="@+id/tv_pass_user"
+                android:textAlignment="center"
+                ></TextView>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="23sp"
+                android:layout_below="@+id/tv_pass_user"
+                android:padding="15dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_etxt"
+                android:id="@+id/ed_txt_crear_pass"
+                android:inputType="textPassword"
+                ></EditText>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iniciar Sesion"
+
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/btn_registrar_nick"
+        android:textColor="@color/primary_text"
+        ></Button>
+
+
+</RelativeLayout>

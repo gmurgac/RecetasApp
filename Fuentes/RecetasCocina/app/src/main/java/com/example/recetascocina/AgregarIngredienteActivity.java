@@ -3,8 +3,12 @@ package com.example.recetascocina;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,6 +50,7 @@ public class AgregarIngredienteActivity extends AppCompatActivity {
     private SpinerIngredientesAdapter adapterSpinerIngr;
     private TextView unidadMedidaTv;
     private Toolbar toolbar;
+    private EditText filtro;
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -58,6 +63,65 @@ public class AgregarIngredienteActivity extends AppCompatActivity {
         super.onResume();
 
         //Inicializacion de elementos graficos como objetos
+        this.filtro = findViewById(R.id.filtro_etxt_ingrediente);
+        this.filtro.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                queue = Volley.newRequestQueue(AgregarIngredienteActivity.this);//Inicializa cola de peticiones
+                //Generacion de peticion JSON
+                JsonArrayRequest jsonReq = new JsonArrayRequest(
+                        Request.Method.GET
+                        , Globales.urlIngredientes+"/"+s
+                        , null
+                        , new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            List<IngredienteJson> lista = new ArrayList<IngredienteJson>(){};
+
+                            ingredientes.clear();
+                            IngredienteJson[] ingredientesObj = new Gson().fromJson(response.toString() , IngredienteJson[].class);
+                            //ingredientes.addAll(Arrays.asList(ingredientesObj));
+                            lista.addAll(Arrays.asList(ingredientesObj));
+                            for (IngredienteJson ij: lista
+                            ) {
+                                if(!ingrDAO.findIngrediente(ij.getNombre())){
+                                    ingredientes.add(ij);
+                                }
+                            }
+
+
+                        } catch (Exception e) {
+                            ingredientes = null;
+
+                        }finally {
+
+                            adapterSpinerIngr.notifyDataSetChanged();
+
+
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        ingredientes = null;
+                        adapterSpinerIngr.notifyDataSetChanged();
+                    }
+                });
+                //FIN peticion JSON
+                queue.add(jsonReq);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         this.cantidadIngrET = findViewById(R.id.cantidad_ingrediente_et);
         this.agregar = findViewById(R.id.agregar_ingrediente_inventario_btn);
         this.unidadMedidaTv = findViewById(R.id.unidad_medida_txv2);
@@ -130,6 +194,10 @@ public class AgregarIngredienteActivity extends AppCompatActivity {
         this.agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
                 List<String> errores = new ArrayList<String>();
                 float cantidad =0;
                 IngredienteJson ijson = new IngredienteJson();
@@ -167,6 +235,7 @@ public class AgregarIngredienteActivity extends AppCompatActivity {
                         cadenaErrores=cadenaErrores+" "+e;
                     }
                     Toast.makeText(AgregarIngredienteActivity.this,cadenaErrores,Toast.LENGTH_LONG).show();
+
                 }
             }
         });

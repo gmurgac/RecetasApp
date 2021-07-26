@@ -34,6 +34,18 @@
             android:background="@drawable/rounded_etxt"
 
             ></EditText>
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Solo con mi despensa"
+            android:textSize="25sp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/roundedbuttondisabled"
+            android:id="@+id/check_solo_despensa"
+            android:textAlignment="center"
+            ></CheckBox>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

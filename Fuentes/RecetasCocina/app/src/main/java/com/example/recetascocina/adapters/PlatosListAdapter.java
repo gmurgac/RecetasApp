@@ -46,32 +46,40 @@ public class PlatosListAdapter extends ArrayAdapter<Plato> {
         TextView comensalesTv = fila.findViewById(R.id.cantidad_comensales_tv);
         ImageView alertaIv = fila.findViewById(R.id.alerta_ingredientes_iv);
         TextView mensajeAlertaTv = fila.findViewById(R.id.alerta_mensaje_tv);
+
         Plato actual = this.list.get(position);
-        nombreTv.setText(actual.getNombre());
-        int cantidadComensalesPlato =0;
-        try{
-            cantidadComensalesPlato = actual.getIngredientes().get(0).getPlatoIngredientes().getCantidadComensales();
-
-        }catch (Exception e){
-
-        }
-        comensalesTv.setText("Receta para: "+cantidadComensalesPlato+" personas");
-
-        //Verificacion de stock, si tiene cantidades suficientes asigna colores verde y OK, si tiene menos toma color Rojo.(Acompañados de mensaje)
         List<IngredienteJson> ingredientesDelPlato = actual.getIngredientes();
-        if(verificarStock(ingredientesDelPlato, ingredientesStock)){
-            //image view OK
-            alertaIv.setImageResource(R.drawable.ic_baseline_tag_faces_24);
-            mensajeAlertaTv.setText("Tienes todos los ingredientes");
-            alertaIv.setBackgroundResource(R.color.pass);
-        }else{
-            //imgae view caution, mas textview faltan algunos ingredientes
-            alertaIv.setImageResource(R.drawable.ic_baseline_report_24);
-            mensajeAlertaTv.setText("Te faltan algunos ingredientes");
-            alertaIv.setBackgroundResource(R.color.red_pokeball);
-        }
+        //VERIFICAR SI TIENE TODOS LOS INGREDIENTES
 
-        return fila;
+                nombreTv.setText(actual.getNombre());
+                int cantidadComensalesPlato = 0;
+                try {
+                    cantidadComensalesPlato = actual.getIngredientes().get(0).getPlatoIngredientes().getCantidadComensales();
+
+                } catch (Exception e) {
+
+                }
+                comensalesTv.setText("Receta para: " + cantidadComensalesPlato + " personas");
+
+                //Verificacion de stock, si tiene cantidades suficientes asigna colores verde y OK, si tiene menos toma color Rojo.(Acompañados de mensaje)
+
+                if (verificarStock(ingredientesDelPlato, ingredientesStock)) {
+                    //image view OK
+                    alertaIv.setImageResource(R.drawable.ic_baseline_tag_faces_24);
+                    mensajeAlertaTv.setText("Tienes todos los ingredientes");
+                    alertaIv.setBackgroundResource(R.color.pass);
+
+                } else {
+                    //imgae view caution, mas textview faltan algunos ingredientes
+                    alertaIv.setImageResource(R.drawable.ic_baseline_report_24);
+                    mensajeAlertaTv.setText("Te faltan algunos ingredientes");
+                    alertaIv.setBackgroundResource(R.color.red_pokeball);
+
+                }
+
+
+       return fila;
+
     }
 
     //Metodo para verificar si existe ingrediente del plato en el stock del usuario.

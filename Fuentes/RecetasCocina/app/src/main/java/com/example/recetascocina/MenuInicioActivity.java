@@ -2,6 +2,7 @@ package com.example.recetascocina;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.dynamicanimation.animation.DynamicAnimation;
 import androidx.dynamicanimation.animation.SpringAnimation;
 import androidx.dynamicanimation.animation.SpringForce;
@@ -11,8 +12,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toolbar;
+import android.widget.TextView;
+
+import com.example.recetascocina.dto.Ingrediente;
+import com.example.recetascocina.dto.Usuario;
 
 public class MenuInicioActivity extends AppCompatActivity {
 
@@ -20,6 +25,9 @@ public class MenuInicioActivity extends AppCompatActivity {
     private Button inventarioBtn; //Boton que lleva a la activity de inventario
     private Button buscarAlmuerzoBtn; //Boton que lleva a la activity de buscar almuerzo
     private Button buscarTragosBtn; //boton que lleva a la activity de buscar tragos
+    private Toolbar toolbar;
+    private TextView tituloToolbar;
+    private Usuario user;
 
 
     @Override
@@ -49,6 +57,13 @@ public class MenuInicioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_inicio);
+
+        this.toolbar = findViewById(R.id.idTolbar);
+        this.tituloToolbar = findViewById(R.id.titulo_toolbar_txt);
+        if(getIntent().getExtras() != null){
+            this.user = (Usuario) getIntent().getSerializableExtra("usuario");//Se recibe extra desde inventario, ingrediente que se selecciono en activity de inventario.
+        }
+        this.tituloToolbar.setText("Bienvenido "+this.user.getNickname());
 
         final LinearLayout lil = findViewById(R.id.id_linearLayout_menuInicio);
         //final SpringAnimation sprinAnim = new SpringAnimation(lil, DynamicAnimation.TRANSLATION_Y,0);

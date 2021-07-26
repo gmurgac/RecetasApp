@@ -5,44 +5,139 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegistroUsuarioActivity">
-
     <include layout="@layout/toolbar"
         android:id="@+id/idTolbar"
+
         ></include>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="NickName"
-        android:textSize="20sp"
-        android:layout_marginTop="25dp"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/tv_nickname"
-        android:layout_marginBottom="50dp"
-        android:layout_below="@id/idTolbar"
-        ></TextView>
-    <EditText
+<ScrollView
+    android:elevation="-1dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_nickname"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/ed_nickname"
-        android:layout_marginBottom="50dp"
-        android:maxLines="1"
-        android:maxLength="25"
-        android:textSize="30sp"
-        android:padding="15dp"
-        android:layout_margin="15dp"
-        android:background="@drawable/rounded_etxt"
-        ></EditText>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Registrarse"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/btn_registrar_nick"
-        android:textColor="@color/primary_text"
-        ></Button>
+        android:layout_height="match_parent">
+        <include layout="@layout/toolbar"
+            android:id="@+id/idToolbar"
+            android:visibility="invisible"
+            ></include>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NickName"
+            android:textSize="20sp"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tv_nickname"
+            android:layout_below="@id/idToolbar"
+            ></TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_nickname"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/ed_nickname"
+            android:maxLines="1"
+            android:maxLength="25"
+            android:textSize="25sp"
+            android:padding="15dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_etxt"
+            ></EditText>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:layout_below="@+id/ed_nickname"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:text="Correo"
+            android:id="@+id/tv_correo_reg"
+            ></TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:layout_below="@+id/tv_correo_reg"
+            android:padding="15dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_etxt"
+            android:id="@+id/ed_txt_correo"
+            android:inputType="textEmailAddress"
+            ></EditText>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:layout_below="@+id/ed_txt_correo"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:text="Crear Contraseña"
+            android:id="@+id/tv_pass_user"
+            ></TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:layout_below="@+id/tv_pass_user"
+            android:padding="15dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_etxt"
+            android:id="@+id/ed_txt_crear_pass"
+            android:inputType="textPassword"
+            ></EditText>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:layout_below="@+id/ed_txt_crear_pass"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:text="Repetir Contraseña"
+            android:id="@+id/tv_repetir_pass"
+            ></TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:inputType="textPassword"
+            android:layout_below="@+id/tv_repetir_pass"
+            android:padding="15dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_etxt"
+            android:id="@+id/ed_txt_repetir_pass"
+            ></EditText>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registrarse"
+            android:layout_below="@id/ed_txt_repetir_pass"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/btn_registrar_nick"
+            android:textColor="@color/primary_text"
+            ></Button>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ya posees una cuenta?"
+            android:layout_below="@+id/btn_registrar_nick"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tv_yaposee"
+            ></TextView>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Iniciar sesion"
+            android:layout_below="@+id/tv_yaposee"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/roundedbutton"
+            android:id="@+id/btn_iniciar_sesion_yaposee"
+            android:textColor="@color/primary_text"
+            ></Button>
+    </RelativeLayout>
+</ScrollView>
+
+
+
 
 </RelativeLayout>

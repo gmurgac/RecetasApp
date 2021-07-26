@@ -31,10 +31,12 @@ public class MainActivity extends AppCompatActivity {
         this.menuInicioBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //Se lanza la Activity Menu de inicio
                 if(userDAO.getUser()!=null){
-
-                    startActivity(new Intent(MainActivity.this,MenuInicioActivity.class));
+                    Intent intent = new Intent(MainActivity.this,MenuInicioActivity.class);
+                    intent.putExtra("usuario",userDAO.getUser());
+                    startActivity(intent);
                 }else{
                     startActivity(new Intent(MainActivity.this,RegistroUsuarioActivity.class));
                 }

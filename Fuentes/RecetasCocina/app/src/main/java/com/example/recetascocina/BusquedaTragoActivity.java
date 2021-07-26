@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -39,6 +40,7 @@ public class BusquedaTragoActivity extends AppCompatActivity {
     private TragosListAdapter adapterListTragos;//Adaptador personalizado de vista de lista para tragos
     private List<Trago> tragosJsonList = new ArrayList<Trago>(){};//Listado de tragos
     private Toolbar toolbar;
+    private TextView tituloToolbar;
 
     @Override
     protected void onResume() {
@@ -60,6 +62,8 @@ public class BusquedaTragoActivity extends AppCompatActivity {
         this.setSupportActionBar(this.toolbar);
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.getSupportActionBar().setDisplayShowHomeEnabled(true);
+        this.tituloToolbar = findViewById(R.id.titulo_toolbar_txt);
+        this.tituloToolbar.setText("Solo para mayores de 18 ;)");
         this.tragoEd = findViewById(R.id.trago_buscar_edtxt);
         this.buscarTragoBtn = findViewById(R.id.btn_buscar_trago);
         this.tragosEncontradosLv = findViewById(R.id.tragos_encontrados_lv);

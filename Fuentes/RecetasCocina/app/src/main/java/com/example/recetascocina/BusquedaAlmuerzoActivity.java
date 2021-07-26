@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,8 +20,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.recetascocina.adapters.PlatosListAdapter;
+import com.example.recetascocina.dao.IngredientesDAO;
+import com.example.recetascocina.dao.IngredientesDAOSqLite;
+import com.example.recetascocina.dto.Ingrediente;
 import com.example.recetascocina.dto.IngredienteJson;
 import com.example.recetascocina.dto.Plato;
+import com.example.recetascocina.dto.Usuario;
 import com.example.recetascocina.helpers.Globales;
 import com.google.gson.Gson;
 
@@ -41,6 +47,8 @@ public class BusquedaAlmuerzoActivity extends AppCompatActivity {
     private RequestQueue queue; //Objeto necesario para el consumo de la API, para abrir cola de peticiones
     private PlatosListAdapter adapterPlatosLv; //Adaptador personalizado de Vista de lista.
     private Toolbar toolbar;
+    private CheckBox checkBox;
+    private TextView tituloToolbar;
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -64,13 +72,17 @@ public class BusquedaAlmuerzoActivity extends AppCompatActivity {
         this.setSupportActionBar(this.toolbar);
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        this.tituloToolbar = findViewById(R.id.titulo_toolbar_txt);
+        this.tituloToolbar.setText("Qué buscas hoy?");
         this.platoEdTxt = findViewById(R.id.plato_buscar_edtxt);
         this.platosEncontradosLv = findViewById(R.id.platos_encontrados_lv);
         this.buscarPlatosBtn = findViewById(R.id.btn_buscar_almuerzo);
+        this.checkBox = findViewById(R.id.check_solo_despensa);
         //Inicializacion de adaptadores
         this.adapterPlatosLv = new PlatosListAdapter(this,R.layout.platos_list,this.platosJsonList);
         this.platosEncontradosLv.setAdapter(this.adapterPlatosLv); //Se carga Vista de listado con adaptador
-
+        this.checkBox.setChecked(true);
         //Se crea una nueva cola de peticiones a traves de la libreria Volley, en este activity.
         queue = Volley.newRequestQueue(BusquedaAlmuerzoActivity.this);
         //Se agrega funcionalidad de click en boton de buscar platos
@@ -97,6 +109,22 @@ public class BusquedaAlmuerzoActivity extends AppCompatActivity {
                                 platosJsonList = null;
 
                             }finally {
+                                if(checkBox.isChecked()){
+                                    IngredientesDAO ingrDAO = new IngredientesDAOSqLite(BusquedaAlmuerzoActivity.this);
+                                    List<Ingrediente> ingredientesStock = ingrDAO.getAll();
+                                    //BORRAR TODOS SIN STOCK EN CASO QUE UN CHEK DE SOLO CON MIS INGREDIENTES
+                                    List<Plato> platosConStock = new ArrayList<>();
+                                    for(Plato p: platosJsonList){
+                                        if(adapterPlatosLv.verificarStock(p.getIngredientes(),ingredientesStock)){
+                                            platosConStock.add(p);
+                                        }
+                                    }
+                                    platosJsonList.clear();
+                                    for(Plato p: platosConStock){
+                                        platosJsonList.add(p);
+                                    }
+                                }
+
                                 //Se notifica al adaptador de la Lista que sus datos cambiaron (Listado de platos)
                                 adapterPlatosLv.notifyDataSetChanged();
 
@@ -130,8 +158,27 @@ public class BusquedaAlmuerzoActivity extends AppCompatActivity {
                                 platosJsonList = null;
 
                             }finally {
+                                if(checkBox.isChecked()){
+                                    IngredientesDAO ingrDAO = new IngredientesDAOSqLite(BusquedaAlmuerzoActivity.this);
+                                    List<Ingrediente> ingredientesStock = ingrDAO.getAll();
+                                    //BORRAR TODOS SIN STOCK EN CASO QUE UN CHEK DE SOLO CON MIS INGREDIENTES
+                                    List<Plato> platosConStock = new ArrayList<>();
+                                    for(Plato p: platosJsonList){
+                                        if(adapterPlatosLv.verificarStock(p.getIngredientes(),ingredientesStock)){
+                                            platosConStock.add(p);
+                                        }
+                                    }
+                                    platosJsonList.clear();
+                                    for(Plato p: platosConStock){
+                                        platosJsonList.add(p);
+                                    }
+                                }
+
+
                                 //Se notifica al adaptador de la Lista que sus datos cambiaron (Listado de platos)
                                 adapterPlatosLv.notifyDataSetChanged();
+
+                                //TRAER SOLO LOS CON STOCK
 
 
                             }

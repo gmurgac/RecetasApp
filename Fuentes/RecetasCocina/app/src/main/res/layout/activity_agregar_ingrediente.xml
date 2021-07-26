@@ -14,7 +14,16 @@
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombre del producto"></TextView>
+        android:text="Nombre del producto"
+        android:textSize="25sp"></TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/rounded_etxt"
+        android:textSize="23sp"
+        android:id="@+id/filtro_etxt_ingrediente"
+        ></EditText>
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,6 +33,7 @@
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
 
         android:text="Cantidad"></TextView>
     <LinearLayout
@@ -32,6 +42,7 @@
         android:orientation="horizontal"
         >
         <EditText
+            android:textSize="23sp"
             android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,6 +57,7 @@
             android:layout_weight="1"
             android:id="@+id/unidad_medida_txv2"
             android:layout_margin="5dp"
+            android:textSize="23sp"
             ></TextView>
     </LinearLayout>
 

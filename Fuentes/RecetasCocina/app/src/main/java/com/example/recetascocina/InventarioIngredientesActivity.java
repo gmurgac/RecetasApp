@@ -3,9 +3,11 @@ package com.example.recetascocina;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -37,6 +39,8 @@ public class InventarioIngredientesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+
         this.ingredientes = this.ingrDAO.getAll();//Se asigna listado de ingredientes a los que estan en base de datos local
         //Inicializacion de objetos con elementos graficos.
         this.agregarIngrBtn = findViewById(R.id.agregar_ingrediente_btn);
@@ -64,7 +68,7 @@ public class InventarioIngredientesActivity extends AppCompatActivity {
         });
 
     }
-
+    private TextView tituloToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +77,8 @@ public class InventarioIngredientesActivity extends AppCompatActivity {
         this.setSupportActionBar(this.toolbar);
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.getSupportActionBar().setDisplayShowHomeEnabled(true);
+        this.tituloToolbar = findViewById(R.id.titulo_toolbar_txt);
+        this.tituloToolbar.setText("Tú Despensa");
 
 
     }
