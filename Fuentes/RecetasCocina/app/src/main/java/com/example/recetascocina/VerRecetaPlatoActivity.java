@@ -62,7 +62,7 @@ public class VerRecetaPlatoActivity extends AppCompatActivity {
         //CARGAR ELEMENTOS DEL PLATO
         this.nombrePlatoTv.setText(this.plato.getNombre());//Se carga nombre.
         try {
-            this.cantidadComenTv.setText("Receta para "+this.plato.getIngredientes().get(0).getPlatoIngredientes().getCantidadComensales()+" personas");//Se carga cantidad de comensales
+            this.cantidadComenTv.setText("Receta para "+this.plato.getIngredientes().get(0).getPlato_ingredientes().getCantidadComensales()+" personas");//Se carga cantidad de comensales
         }catch (Exception e){
 
         }
@@ -86,7 +86,7 @@ public class VerRecetaPlatoActivity extends AppCompatActivity {
                          ) {
                         if(iPlato.getNombre().equalsIgnoreCase(iStock.getNombre())){//Si nombres de ingredientes son iguales, resta las cantidades utilizadas al stock
                             if(iStock.getCantidad() != 0){ //Solo resta si cantidad es distinta de 0
-                                float resta = iStock.getCantidad()-iPlato.getPlatoIngredientes().getCantidadIngrediente(); //Resta de Stock menos cantidad utilizada del plato
+                                float resta = iStock.getCantidad()-iPlato.getPlato_ingredientes().getCantidadIngrediente(); //Resta de Stock menos cantidad utilizada del plato
                                 if(resta<0){ //Si la resta da menor que 0, deja stock en 0.
                                     Ingrediente modificable = new Ingrediente();//Ingrediente a modificar
                                     modificable = iStock;//Ingrediente que esta en stock

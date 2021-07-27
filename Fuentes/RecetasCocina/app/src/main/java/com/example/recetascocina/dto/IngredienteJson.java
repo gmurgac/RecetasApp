@@ -1,7 +1,6 @@
 package com.example.recetascocina.dto;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 public class IngredienteJson implements Serializable{
     private int ingredienteId;
@@ -9,23 +8,23 @@ public class IngredienteJson implements Serializable{
     private String unidadMedida;
     private String createdAt;
     private String updatedAt;
-    private plato_ingredientes plato_ingredientes;
-    private trago_ingredientes trago_ingredientes;
+    private PlatoIngredientes plato_ingredientes;
+    private TragoIngredientes trago_ingredientes;
 
-    public com.example.recetascocina.dto.trago_ingredientes getTrago_ingredientes() {
-        return trago_ingredientes;
-    }
-
-    public void setTrago_ingredientes(com.example.recetascocina.dto.trago_ingredientes trago_ingredientes) {
-        this.trago_ingredientes = trago_ingredientes;
-    }
-
-    public plato_ingredientes getPlatoIngredientes() {
+    public PlatoIngredientes getPlato_ingredientes() {
         return plato_ingredientes;
     }
 
-    public void setPlatoIngredientes(plato_ingredientes platoIngredientes) {
-        this.plato_ingredientes = platoIngredientes;
+    public void setPlato_ingredientes(PlatoIngredientes plato_ingredientes) {
+        this.plato_ingredientes = plato_ingredientes;
+    }
+
+    public TragoIngredientes getTrago_ingredientes() {
+        return trago_ingredientes;
+    }
+
+    public void setTrago_ingredientes(TragoIngredientes trago_ingredientes) {
+        this.trago_ingredientes = trago_ingredientes;
     }
 
     @Override

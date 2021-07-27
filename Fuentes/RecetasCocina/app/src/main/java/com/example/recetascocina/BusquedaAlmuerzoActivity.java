@@ -7,10 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -25,6 +27,7 @@ import com.example.recetascocina.dao.IngredientesDAOSqLite;
 import com.example.recetascocina.dto.Ingrediente;
 import com.example.recetascocina.dto.IngredienteJson;
 import com.example.recetascocina.dto.Plato;
+import com.example.recetascocina.dto.PlatoIngredientes;
 import com.example.recetascocina.dto.Usuario;
 import com.example.recetascocina.helpers.Globales;
 import com.google.gson.Gson;
@@ -49,6 +52,9 @@ public class BusquedaAlmuerzoActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private CheckBox checkBox;
     private TextView tituloToolbar;
+    private CheckBox checkTipo;
+    private Spinner spinnerTipos;
+    private List<PlatoIngredientes> platoIngredientesList = new ArrayList<PlatoIngredientes>(){};
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -63,6 +69,12 @@ public class BusquedaAlmuerzoActivity extends AppCompatActivity {
         this.adapterPlatosLv.notifyDataSetChanged(); //Se notifica al adaptador si es que hubo cambios en la lista de platos
     }
 
+    /*private void agregarTiposArray(String[] listadoSpiner){
+        for(int i=0;i<listadoSpiner.length;i++){
+            listadoSpiner[i] = llenar con tabla tipos API
+        }
+    }*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +84,12 @@ public class BusquedaAlmuerzoActivity extends AppCompatActivity {
         this.setSupportActionBar(this.toolbar);
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+        this.checkTipo = findViewById(R.id.check_filtro_tipo);
+        this.spinnerTipos = findViewById(R.id.spinner_tipo_buscar);
+        String[] listadoTiposPlatos = new String[]{"fondo","entrada","postre"};
+        ArrayAdapter<String> adapterSpiner = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listadoTiposPlatos);
+        adapterSpiner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        this.spinnerTipos.setAdapter(adapterSpiner);
         this.tituloToolbar = findViewById(R.id.titulo_toolbar_txt);
         this.tituloToolbar.setText("Qué buscas hoy?");
         this.platoEdTxt = findViewById(R.id.plato_buscar_edtxt);
@@ -90,6 +107,9 @@ public class BusquedaAlmuerzoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String nombrePlato = platoEdTxt.getText().toString(); //Se crea y asigna texto de busqueda ingresao en input de texto. (Filtro para busqueda)
+                /*if(checkTipo.isChecked()){
+                   //TODO: LLAMAR URL CON FILTRO TIPO
+                }*/
                 if(nombrePlato.isEmpty()){ //CASO QUE CAMPO DE TEXTO VACIO == SIN FILTRAR
                     //Peticion JSON
                     JsonArrayRequest jsonReq = new JsonArrayRequest(
@@ -124,6 +144,19 @@ public class BusquedaAlmuerzoActivity extends AppCompatActivity {
                                         platosJsonList.add(p);
                                     }
                                 }
+                                if(checkTipo.isChecked()){
+                                    List<Plato> platosConTipo = new ArrayList<>();
+                                    String tipoSelec = spinnerTipos.getSelectedItem().toString().trim();
+                                    for(Plato p: platosJsonList){
+                                        if(p.getTipo().equals(tipoSelec)){
+                                            platosConTipo.add(p);
+                                        }
+                                    }
+                                    platosJsonList.clear();
+                                    for(Plato p: platosConTipo){
+                                        platosJsonList.add(p);
+                                    }
+                                }
 
                                 //Se notifica al adaptador de la Lista que sus datos cambiaron (Listado de platos)
                                 adapterPlatosLv.notifyDataSetChanged();
@@ -143,17 +176,19 @@ public class BusquedaAlmuerzoActivity extends AppCompatActivity {
                     //CASO CAMPO DE TEXTO DE BUSQUEDA NO ES VACIO , SE APLICA FILTRO
                     JsonArrayRequest jsonReq = new JsonArrayRequest(
                             Request.Method.GET
-                            , Globales.urlPlatos+"/"+nombrePlato //URL API CON FILTRO
+                            , Globales.urlPlatosIngredientes+"/"+nombrePlato //URL API CON FILTRO
                             , null
                             , new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {
                             try {
-
+                                platoIngredientesList.clear();
                                 platosJsonList.clear(); //se limpia lista de platos
-                                Plato[] platosObj = new Gson().fromJson(response.toString() , Plato[].class);//Se crea y asigna array de platos, con libreria GSON traduce el texto entregado por la API en formato JSON.
-                                platosJsonList.addAll(Arrays.asList(platosObj));//Se añade array de platos a Listado de platos en formato Lista.
-
+                                PlatoIngredientes[] platosObj = new Gson().fromJson(response.toString() , PlatoIngredientes[].class);//Se crea y asigna array de platos, con libreria GSON traduce el texto entregado por la API en formato JSON.
+                                platoIngredientesList.addAll(Arrays.asList(platosObj));//Se añade array de platos a Listado de platos en formato Lista.
+                                for(PlatoIngredientes p: platoIngredientesList){
+                                    platosJsonList.add(p.getIdPlato());
+                                }
                             } catch (Exception e) {
                                 platosJsonList = null;
 
@@ -170,6 +205,19 @@ public class BusquedaAlmuerzoActivity extends AppCompatActivity {
                                     }
                                     platosJsonList.clear();
                                     for(Plato p: platosConStock){
+                                        platosJsonList.add(p);
+                                    }
+                                }
+                                if(checkTipo.isChecked()){
+                                    List<Plato> platosConTipo = new ArrayList<>();
+                                    String tipoSelec = spinnerTipos.getSelectedItem().toString().trim();
+                                    for(Plato p: platosJsonList){
+                                        if(p.getTipo().equals(tipoSelec)){
+                                            platosConTipo.add(p);
+                                        }
+                                    }
+                                    platosJsonList.clear();
+                                    for(Plato p: platosConTipo){
                                         platosJsonList.add(p);
                                     }
                                 }

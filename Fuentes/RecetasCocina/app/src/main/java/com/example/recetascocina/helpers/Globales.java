@@ -7,5 +7,6 @@ public class Globales {
     public final static String urlPlatos = ipUrl+"platos";
     public final static String urlUsuarios = ipUrl+"usuarios";
     public final static String urlTragos = ipUrl+"tragos";
+    public final static String urlPlatosIngredientes = ipUrl+"platosIngredientes";
 }
 //TODO: Boton superior en toolbar

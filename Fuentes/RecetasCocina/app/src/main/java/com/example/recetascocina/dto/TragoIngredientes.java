@@ -2,7 +2,7 @@ package com.example.recetascocina.dto;
 
 import java.io.Serializable;
 
-public class trago_ingredientes implements Serializable {
+public class TragoIngredientes implements Serializable {
     private float cantidadIngrediente;
     private String createdAt;
     private String updatedAt;

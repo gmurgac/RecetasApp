@@ -49,7 +49,7 @@ public class IngredientesPlatoListAdapter extends ArrayAdapter<IngredienteJson> 
         TextView cantidadStockTv = fila.findViewById(R.id.cantidad_ingrediente_stock_tv);
         IngredienteJson actual = ingredientesJsons.get(position);
         nombreTv.setText(actual.getNombre());
-        cantidadTv.setText(""+actual.getPlatoIngredientes().getCantidadIngrediente()+" "+actual.getUnidadMedida());
+        cantidadTv.setText(""+actual.getPlato_ingredientes().getCantidadIngrediente()+" "+actual.getUnidadMedida());
         float cantidadEnStock = 0;
         for (Ingrediente i: ingredientesStock
              ) {
@@ -57,9 +57,9 @@ public class IngredientesPlatoListAdapter extends ArrayAdapter<IngredienteJson> 
                 cantidadEnStock = i.getCantidad();
             }
         }
-        if(cantidadEnStock < actual.getPlatoIngredientes().getCantidadIngrediente()){
+        if(cantidadEnStock < actual.getPlato_ingredientes().getCantidadIngrediente()){
             cantidadStockTv.setBackgroundResource(R.color.red_pokeball);
-        }else if(cantidadEnStock == actual.getPlatoIngredientes().getCantidadIngrediente()){
+        }else if(cantidadEnStock == actual.getPlato_ingredientes().getCantidadIngrediente()){
             cantidadStockTv.setBackgroundResource(R.color.caution);
         }else{
             cantidadStockTv.setBackgroundResource(R.color.pass);

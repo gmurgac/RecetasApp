@@ -2,13 +2,29 @@ package com.example.recetascocina.dto;
 
 import java.io.Serializable;
 
-public class plato_ingredientes implements Serializable {
+public class PlatoIngredientes implements Serializable {
     private int cantidadComensales;
     private float cantidadIngrediente;
     private String createdAt;
     private String updatedAt;
-    private int ingredienteId;
-    private int platoId;
+    private IngredienteJson idIngrediente;
+    private Plato idPlato;
+
+    public IngredienteJson getIdIngrediente() {
+        return idIngrediente;
+    }
+
+    public void setIdIngrediente(IngredienteJson idIngrediente) {
+        this.idIngrediente = idIngrediente;
+    }
+
+    public Plato getIdPlato() {
+        return idPlato;
+    }
+
+    public void setIdPlato(Plato idPlato) {
+        this.idPlato = idPlato;
+    }
 
     public int getCantidadComensales() {
         return cantidadComensales;
@@ -42,19 +58,5 @@ public class plato_ingredientes implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public int getIngredienteId() {
-        return ingredienteId;
-    }
 
-    public void setIngredienteId(int ingredienteId) {
-        this.ingredienteId = ingredienteId;
-    }
-
-    public int getPlatoId() {
-        return platoId;
-    }
-
-    public void setPlatoId(int platoId) {
-        this.platoId = platoId;
-    }
 }

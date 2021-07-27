@@ -54,7 +54,7 @@ public class PlatosListAdapter extends ArrayAdapter<Plato> {
                 nombreTv.setText(actual.getNombre());
                 int cantidadComensalesPlato = 0;
                 try {
-                    cantidadComensalesPlato = actual.getIngredientes().get(0).getPlatoIngredientes().getCantidadComensales();
+                    cantidadComensalesPlato = actual.getIngredientes().get(0).getPlato_ingredientes().getCantidadComensales();
 
                 } catch (Exception e) {
 
@@ -100,7 +100,7 @@ public class PlatosListAdapter extends ArrayAdapter<Plato> {
                     //TIENE EL INGREDIENTE...VERIFICAR CANTIDAD
                     hayStock = true;
                     float cantidadStock = ig.getCantidad();
-                    float cantidadPlato = i.getPlatoIngredientes().getCantidadIngrediente();
+                    float cantidadPlato = i.getPlato_ingredientes().getCantidadIngrediente();
                     if (cantidadStock >= cantidadPlato) {
                         hayCantidad = true;
                         break;
